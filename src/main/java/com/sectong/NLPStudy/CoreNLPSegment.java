@@ -1,6 +1,8 @@
 package com.sectong.NLPStudy;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.CoreAnnotations.NamedEntityTagAnnotation;
@@ -13,10 +15,12 @@ import edu.stanford.nlp.util.CoreMap;
 
 public class CoreNLPSegment {
 
-	public static void main(String[] args) {
-
+	public static void main(String[] args) throws IOException {
+		//读取配置文件
+		Properties prop = new Properties();
+		prop.load(CoreNLPSegment.class.getResourceAsStream("/CoreNLP-chinese.properties"));
 		// 载入自定义的Properties文件
-		StanfordCoreNLP pipeline = new StanfordCoreNLP("CoreNLP-chinese.properties");
+		StanfordCoreNLP pipeline = new StanfordCoreNLP(prop);
 		
 		// 用一些文本来初始化一个注释。文本是构造函数的参数。
 		Annotation annotation;
