@@ -9,16 +9,16 @@ import java.sql.Statement;
 public class DbUility {
 
     private Connection con;
-    public Connection InitMysqlConnection(){
+    public boolean InitMysqlConnection(){
         try {
 //            Connection con = null; //定义一个MYSQL链接对象
             Class.forName("com.mysql.jdbc.Driver").newInstance(); //MYSQL驱动
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test", "root", "root"); //链接本地MYSQL
+            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/hamstercrawler", "root", ""); //链接本地MYSQL
             System.out.print("yes");
-            return  con;
+            return  true;
         } catch (Exception e) {
             System.out.println("MYSQL ERROR:" + e.getMessage());
-            return null;
+            return false;
         }
     }
 
